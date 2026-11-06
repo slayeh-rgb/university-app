@@ -1,11 +1,7 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+
 import "./App.css";
 import avatarImage from "./assets/img.jpeg";
-function App() {
-  const etudiant = {
+const etudiant = {
     nom: " Ltaifi Mohamed Salah",
     email: "ltaifimohamed384@gmail.com",
     telephone: "+216 50401918",
@@ -16,9 +12,10 @@ function App() {
     avatar: avatarImage
   };
 
-  const handleContact = () => {
+const handleContact = () => {
     window.location.href = `mailto:${etudiant.email}`;
   };
+function App() {
 
   return (
     <div className="container">
