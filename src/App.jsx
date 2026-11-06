@@ -1,42 +1,70 @@
-
 import "./App.css";
-import avatarImage from "./assets/img.jpeg";
-const etudiant = {
-    nom: " Ltaifi Mohamed Salah",
+import Header from "./components/Header.jsx";
+import Navbar from "./components/Navbar.jsx";
+import StudentCard from "./components/StudentCard.jsx";
+import Footer from "./components/Footer.jsx";
+import "./App.css";
+import img1 from "./assets/img1.jpeg" ;
+import img2 from "./assets/img2.jpg" ;
+import img3 from "./assets/img3.jpeg" ;
+const etudiants = [
+  {
+    prenom: " Mohamed Salah",
+    nom: "Ltaifi",
     email: "ltaifimohamed384@gmail.com",
     telephone: "+216 50401918",
     filiere: "Génie Logiciel et Systèmes d'Information",
-    niveau: "2ème année",
+    anneeEtude: "2ème année",
+    groupe: "GLSI 2",
+    ville: "Mednine",
+    image: img1 
+},
+  {
+    prenom: "belhassen",
+    nom: "emp1re",
+    email: "belhassen@gmail.emp1re.com",
+    telephone: "+216 99 999 999",
+    filiere: "Génie Logiciel et Systèmes d'Information",
+    anneeEtude: "2ème année",
     groupe: "GLSI 2",
     ville: "Mahdia",
-    avatar: avatarImage
-  };
+    image: img2
+  },
 
-const handleContact = () => {
-    window.location.href = `mailto:${etudiant.email}`;
-  };
+  {
+    prenom: "johan",
+    nom: "cruyff",
+    email: "cruyff.johan@gmail.com",
+    telephone: "+216 27 567 890",
+    filiere: "Génie Logiciel et Systèmes d'Information",
+    anneeEtude: "2ème année",
+    groupe: "GLSI 2",
+    image: img3
+  },
+  ];
+
 function App() {
-
   return (
-    <div className="container">
-      <div className="card">
-        <h2>Fiche étudiant</h2>
-        <div className="avatar-container">
-          <img src={etudiant.avatar} alt="Photo de profil" className="avatar" />
-        </div>
-        <ul className="info-list">
-          <li><strong>Nom & Prénom:</strong> {etudiant.nom}</li>
-          <li><strong>Email:</strong> {etudiant.email}</li>
-          <li><strong>Téléphone:</strong> {etudiant.telephone}</li>
-          <li><strong>Filière:</strong> {etudiant.filiere}</li>
-          <li><strong>Année d'étude:</strong> {etudiant.niveau}</li>
-          <li><strong>Groupe:</strong> {etudiant.groupe}</li>
-          <li><strong>Ville:</strong> {etudiant.ville}</li>
-        </ul>
-        <button className="btn-contact" onClick={handleContact}>
-          Contacter
-        </button>
-      </div>
+    <div className="app">
+      <Header />
+      <Navbar />
+      <main className="container">
+        {etudiants.map((etudiant) => (
+          <StudentCard
+            key={etudiant.email}
+            prenom={etudiant.prenom}
+            nom={etudiant.nom}
+            email={etudiant.email}
+            telephone={etudiant.telephone}
+            filiere={etudiant.filiere}
+            anneeEtude={etudiant.anneeEtude}
+            groupe={etudiant.groupe}
+            ville={etudiant.ville}
+            image={etudiant.image}
+          />
+        ))}
+      </main>
+      <Footer />
     </div>
   );
 }
