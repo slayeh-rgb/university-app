@@ -76,25 +76,22 @@ function StudentCard(props) {
       )}
 
       <div className="boutons">
-        <button className="btn" onClick={basculerCoordonnees}>
-          {coordonneesVisibles ? "Masquer les coordonnées" : "Afficher les coordonnées"}
-        </button>
+  <button className="btn" onClick={basculerCoordonnees}>
+    {coordonneesVisibles ? "Masquer les coordonnées" : "Afficher les coordonnées"}
+  </button>
 
-        <a className="btn" href={`mailto:${props.email}`}>Contacter</a>
+  <a className="btn" href={`mailto:${props.email}`}>Contacter</a>
 
-        {enEdition ? (
-          <>
-            <button className="btn vert" onClick={enregistrer}>Enregistrer</button>
-            <button className="btn gris" onClick={annuler}>Annuler</button>
-          </>
-        ) : (
-          <button className="btn gris" onClick={() => setEnEdition(true)}>Modifier</button>
-        )}
+  {/* AJOUT TP4 : envoie l'étudiant au parent */}
+  <button className="btn gris" onClick={() => props.onModifier(props.etudiant)}>
+    Modifier
+  </button>
 
-        <button className="btn rouge" onClick={() => props.onSupprimer(props.email)}>
-          Supprimer
-        </button>
-      </div>
+  {/* CHANGEMENT TP4 : on supprime par id */}
+  <button className="btn rouge" onClick={() => props.onSupprimer(props.id)}>
+    Supprimer
+  </button>
+</div>
     </div>
   );
 }

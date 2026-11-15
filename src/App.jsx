@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx";
 import Navbar from "./components/Navbar.jsx";
 import StudentCard from "./components/StudentCard.jsx";
 import Footer from "./components/Footer.jsx";
+import StudentForm from "./components/StudentForm.jsx";
 import img1 from "./assets/img1.jpeg" ;
 import img2 from "./assets/img2.jpg" ;
 import img3 from "./assets/img3.jpeg" ;
@@ -22,6 +23,7 @@ const FORMULAIRE_VIDE = {
 function App() {
   const  [etudiants, setEtudiants] = useState([
   {
+    id:"1",
     prenom: " Mohamed Salah",
     nom: "Ltaifi",
     email: "ltaifimohamed384@gmail.com",
@@ -33,6 +35,7 @@ function App() {
     image: img1 
 },
   {
+    id:"2",
     prenom: "belhassen",
     nom: "emp1re",
     email: "belhassen.emp1re@gmail.com",
@@ -45,6 +48,7 @@ function App() {
   },
 
   {
+    id:"3",
     prenom: "johan",
     nom: "cruyff",
     email: "cruyff.johan@gmail.com",
@@ -55,49 +59,44 @@ function App() {
     image: img3
   },
   ]);
-  // État 2 : la filière sélectionnée pour le filtre
   const [filiereChoisie, setFiliereChoisie] = useState("Toutes");
 
-  // État 3 : le contenu du formulaire d'ajout
-  const [formulaire, setFormulaire] = useState(FORMULAIRE_VIDE);
 
-  // ---------- Ajouter ----------
+  const [etudiantAModifier, setEtudiantAModifier] = useState(null);
 
-function gererChangement(event) {
-    const { name, value } = event.target;
-    setFormulaire({ ...formulaire, [name]: value });
+ 
+  function ajouterEtudiant(nouvelEtudiant) {
+    const etudiantAvecId = { ...nouvelEtudiant, id: Date.now() };
+    setEtudiants([...etudiants, etudiantAvecId]);
   }
 
-  function ajouterEtudiant(event) {
-    event.preventDefault();
-    if (etudiants.some((e) => e.email === formulaire.email)) {
-      alert("Un étudiant avec cet e-mail existe déjà.");
-      return;
+  function supprimerEtudiant(id) {
+    setEtudiants(etudiants.filter((e) => e.id !== id));
+
+    if (etudiantAModifier?.id === id) {
+      setEtudiantAModifier(null);
     }
-    // On crée un NOUVEAU tableau (on ne modifie jamais l'ancien)
-    setEtudiants([...etudiants, formulaire]);
-    setFormulaire(FORMULAIRE_VIDE);
   }
 
-  // ---------- Supprimer ----------
-  function supprimerEtudiant(email) {
-    setEtudiants(etudiants.filter((e) => e.email !== email));
+  function modifierEtudiant(etudiant) {
+    setEtudiantAModifier(etudiant);
   }
 
-  // ---------- Modifier ----------
-  function modifierEtudiant(email, modifications) {
+
+  function enregistrerModification(donnees) {
     setEtudiants(
-      etudiants.map((e) => (e.email === email ? { ...e, ...modifications } : e))
+      etudiants.map((e) =>
+        e.id === etudiantAModifier.id ? { ...e, ...donnees } : e
+      )
     );
+    setEtudiantAModifier(null); 
   }
 
-  // ---------- Filtrer ----------
   const filieres = ["Toutes", ...new Set(etudiants.map((e) => e.filiere))];
   const etudiantsAffiches =
     filiereChoisie === "Toutes"
       ? etudiants
       : etudiants.filter((e) => e.filiere === filiereChoisie);
-
   return (
     <div className="app">
       <Header />
