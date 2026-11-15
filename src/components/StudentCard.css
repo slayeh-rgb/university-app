@@ -24,13 +24,37 @@
   font-size: 0.95rem;
 }
 .card strong { color: #222; }
+
+.edition {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.boutons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
 .btn {
   display: inline-block;
-  margin-top: 14px;
-  padding: 9px 22px;
+  padding: 8px 16px;
   background: #6eaceb;
   color: #fff;
+  border: none;
   border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
   text-decoration: none;
 }
 .btn:hover { background: #4f93d8; }
+.btn.vert { background: #3aa76d; }
+.btn.vert:hover { background: #2d8c59; }
+.btn.gris { background: #8a949e; }
+.btn.gris:hover { background: #6f7881; }
+.btn.rouge { background: #d9534f; }
+.btn.rouge:hover { background: #bd3f3b; }
