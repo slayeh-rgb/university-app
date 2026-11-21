@@ -1,27 +1,18 @@
+import img1 from "./assets/img1.jpeg" ;
+import img2 from "./assets/img2.jpg" ;
+import img3 from "./assets/img3.jpeg" ;
 import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header.jsx";
 import Navbar from "./components/Navbar.jsx";
 import StudentCard from "./components/StudentCard.jsx";
-import Footer from "./components/Footer.jsx";
 import StudentForm from "./components/StudentForm.jsx";
-import img1 from "./assets/img1.jpeg" ;
-import img2 from "./assets/img2.jpg" ;
-import img3 from "./assets/img3.jpeg" ;
-const FORMULAIRE_VIDE = {
-  prenom: "",
-  nom: "",
-  email: "",
-  telephone: "",
-  filiere: "Génie Logiciel et Systèmes d'Information",
-  anneeEtude: "2ème année",
-  groupe: "GLSI 1",
-  ville: "",
-};
+import Footer from "./components/Footer.jsx";
 
+const GL = "Génie Logiciel et Systèmes d'Information";
 
 function App() {
-  const  [etudiants, setEtudiants] = useState([
+  const [etudiants, setEtudiants] = useState([
   {
     id:"1",
     prenom: " Mohamed Salah",
@@ -59,12 +50,10 @@ function App() {
     image: img3
   },
   ]);
-  const [filiereChoisie, setFiliereChoisie] = useState("Toutes");
-
-
   const [etudiantAModifier, setEtudiantAModifier] = useState(null);
+  const [filtreFiliere, setFiltreFiliere] = useState("Toutes");
+  const [recherche, setRecherche] = useState("");
 
- 
   function ajouterEtudiant(nouvelEtudiant) {
     const etudiantAvecId = { ...nouvelEtudiant, id: Date.now() };
     setEtudiants([...etudiants, etudiantAvecId]);
@@ -72,81 +61,66 @@ function App() {
 
   function supprimerEtudiant(id) {
     setEtudiants(etudiants.filter((e) => e.id !== id));
-
-    if (etudiantAModifier?.id === id) {
-      setEtudiantAModifier(null);
-    }
+    if (etudiantAModifier?.id === id) setEtudiantAModifier(null);
   }
 
   function modifierEtudiant(etudiant) {
     setEtudiantAModifier(etudiant);
   }
 
-
   function enregistrerModification(donnees) {
     setEtudiants(
-      etudiants.map((e) =>
-        e.id === etudiantAModifier.id ? { ...e, ...donnees } : e
-      )
+      etudiants.map((e) => (e.id === etudiantAModifier.id ? { ...e, ...donnees } : e))
     );
-    setEtudiantAModifier(null); 
+    setEtudiantAModifier(null);
   }
 
   const filieres = ["Toutes", ...new Set(etudiants.map((e) => e.filiere))];
-  const etudiantsAffiches =
-    filiereChoisie === "Toutes"
-      ? etudiants
-      : etudiants.filter((e) => e.filiere === filiereChoisie);
+  const etudiantsAffiches = etudiants.filter(
+    (e) =>
+      (filtreFiliere === "Toutes" || e.filiere === filtreFiliere) &&
+      `${e.prenom} ${e.nom}`.toLowerCase().includes(recherche.toLowerCase())
+  );
+
   return (
-    <div className="app">
-      <Header />
+    <div>
+      <Header titre="Liste des étudiants" sousTitre="GLSI 2 - Année universitaire 2026-2027" />
       <Navbar />
 
-      <section className="actions">
-        <form className="form-ajout" onSubmit={ajouterEtudiant}>
-          <h2>Ajouter un étudiant</h2>
-          <input name="prenom" placeholder="Prénom" value={formulaire.prenom} onChange={gererChangement} required />
-          <input name="nom" placeholder="Nom" value={formulaire.nom} onChange={gererChangement} required />
-          <input name="email" type="email" placeholder="E-mail" value={formulaire.email} onChange={gererChangement} required />
-          <input name="telephone" placeholder="Téléphone" value={formulaire.telephone} onChange={gererChangement} required />
-          <input name="filiere" placeholder="Filière" value={formulaire.filiere} onChange={gererChangement} required />
-          <input name="groupe" placeholder="Groupe" value={formulaire.groupe} onChange={gererChangement} required />
-          <input name="ville" placeholder="Ville (facultatif)" value={formulaire.ville} onChange={gererChangement} />
-          <button type="submit" className="btn">+ Ajouter un étudiant</button>
-        </form>
+      <StudentForm
+        key={etudiantAModifier ? etudiantAModifier.id : "ajout"}
+        etudiantAModifier={etudiantAModifier}
+        onAjouterEtudiant={ajouterEtudiant}
+        onModifierEtudiant={enregistrerModification}
+        onAnnuler={() => setEtudiantAModifier(null)}
+      />
 
-        <div className="filtre">
-          <label htmlFor="filiere">Filtrer par filière : </label>
-          <select
-            id="filiere"
-            value={filiereChoisie}
-            onChange={(e) => setFiliereChoisie(e.target.value)}
-          >
-            {filieres.map((f) => (
-              <option key={f} value={f}>{f}</option>
-            ))}
-          </select>
-          <span className="compteur">{etudiantsAffiches.length} étudiant(s)</span>
-        </div>
-      </section>
+      <div className="filtres" id="etudiants">
+        <input
+          type="search"
+          placeholder="Rechercher un étudiant…"
+          value={recherche}
+          onChange={(e) => setRecherche(e.target.value)}
+        />
+        <select value={filtreFiliere} onChange={(e) => setFiltreFiliere(e.target.value)}>
+          {filieres.map((f) => <option key={f} value={f}>{f}</option>)}
+        </select>
+      </div>
 
-      <main className="container">
-        {etudiantsAffiches.length === 0 && (
-          <p className="vide">Aucun étudiant à afficher.</p>
-        )}
+      <div className="container">
+        {etudiantsAffiches.length === 0 && <p>Aucun étudiant trouvé.</p>}
         {etudiantsAffiches.map((etudiant) => (
           <StudentCard
-            key={etudiant.email}
-            {...etudiant}
+            key={etudiant.id}
+            etudiant={etudiant}
             onSupprimer={supprimerEtudiant}
             onModifier={modifierEtudiant}
           />
         ))}
-      </main>
+      </div>
 
       <Footer />
     </div>
   );
 }
-
 export default App;

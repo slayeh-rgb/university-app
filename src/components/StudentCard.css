@@ -1,60 +1,12 @@
-.card {
-  background: #fff;
-  width: 360px;
-  max-width: 100%;
-  padding: 24px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-.card img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.card h2 {
-  color: #6eaceb;
-  font-size: 2rem;
-  margin: 12px 0;
-}
-.card p {
-  margin: 8px 0;
-  color: #555;
-  font-size: 0.95rem;
-}
-.card strong { color: #222; }
-
-.edition {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 10px 0;
-}
-
-.boutons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 8px 16px;
-  background: #6eaceb;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  cursor: pointer;
-  text-decoration: none;
-}
-.btn:hover { background: #4f93d8; }
-.btn.vert { background: #3aa76d; }
-.btn.vert:hover { background: #2d8c59; }
-.btn.gris { background: #8a949e; }
-.btn.gris:hover { background: #6f7881; }
-.btn.rouge { background: #d9534f; }
-.btn.rouge:hover { background: #bd3f3b; }
+.card { background: #fff; border-radius: 10px; padding: 20px; text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15); width: 320px; }
+.card img, .avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto; }
+.avatar { display: flex; align-items: center; justify-content: center; background: #6eacea; color: #fff; font-size: 32px; }
+.card h2 { color: #6eacea; margin: 12px 0; }
+.card p { margin: 6px 0; }
+.boutons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
+.boutons button, .btn, .form button { background: #6eacea; color: #fff; border: none; border-radius: 6px;
+  padding: 8px 12px; cursor: pointer; text-decoration: none; font-size: 14px; }
+.boutons button:hover, .btn:hover, .form button:hover { background: #4a8ed6; }
+.boutons .danger { background: #e05a5a; }
+.boutons .danger:hover { background: #c94444; }

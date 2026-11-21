@@ -12,8 +12,18 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
-.student-form h2 { text-align: center; color: #346482; margin: 0 0 8px; }
-.student-form label { font-weight: bold; font-size: 14px; }
+
+.student-form h2 {
+  text-align: center;
+  color: #346482;
+  margin: 0 0 8px;
+}
+
+.student-form label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
 .student-form input,
 .student-form select {
   padding: 8px 10px;
@@ -22,8 +32,13 @@
   font-size: 16px;
   box-sizing: border-box;
 }
+
 .student-form input:focus,
-.student-form select:focus { border-color: #6eaceb; outline: none; }
+.student-form select:focus {
+  border-color: #6eaceb;
+  outline: none;
+}
+
 .student-form button {
   padding: 10px 18px;
   background-color: #6eaceb;
@@ -32,8 +47,32 @@
   border-radius: 6px;
   cursor: pointer;
 }
-.student-form button:hover { background-color: #4f93d8; }
-.student-form button.gris { background-color: #8a949e; }
-.form-boutons { display: flex; gap: 10px; justify-content: center; margin-top: 8px; }
-.erreur { color: #d9534f; font-size: 13px; margin: 0; }
-.apercu { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; align-self: center; }
+
+.student-form button:hover {
+  background-color: #4f93d8;
+}
+
+.student-form button.gris {
+  background-color: #8a949e;
+}
+
+.form-boutons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.erreur {
+  color: #d9534f;
+  font-size: 13px;
+  margin: 0;
+}
+
+.apercu {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  align-self: center;
+}

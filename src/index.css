@@ -71,7 +71,7 @@ body {
 .avatar {
   width: 100px;
   height: 100px;
-  border-radius: 50%; /* Rend l'image parfaitement ronde */
-  object-fit: cover;  /* Évite que l'image soit déformée */
-  border: 3px solid #3498db; /* Ajoute une bordure colorée */
+  border-radius: 50%; 
+  object-fit: cover;  
+  border: 3px solid #3498db; 
 }
