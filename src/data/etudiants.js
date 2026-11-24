@@ -1,6 +1,6 @@
-import slim from "../assets/slim.svg";
-import sarra from "../assets/sarra.svg";
-import mariem from "../assets/mariem.svg";
+import img1 from "../assets/img1.jpg";
+import img2 from "../assets/img2.jpg";
+import img3 from "../assets/img3.jpg";
 
 export const filieres = [
   "Génie Logiciel et Systèmes d'Information",
@@ -10,39 +10,38 @@ export const filieres = [
 
 export const etudiantsInitiaux = [
   {
-    id: 1,
-    prenom: "Slim",
-    nom: "Boubaker",
-    email: "slimboubaker@gmail.com",
-    telephone: "+216 99 999 999",
-    filiere: filieres[0],
-    anneeEtude: "2ème année",
-    groupe: "GLSI 2",
-    ville: "Mahdia",
-    image: slim,
-  },
-  {
-    id: 2,
-    prenom: "Sarra",
-    nom: "Trabelsi",
-    email: "sarra.trabelsi@gmail.com",
-    telephone: "+216 22 345 678",
-    filiere: filieres[1],
-    anneeEtude: "2ème année",
-    groupe: "GLSI 1",
-    ville: "Sousse",
-    image: sarra,
-  },
-  {
-    id: 3,
-    prenom: "Mariem",
-    nom: "Khalfallah",
-    email: "mariem.khalfallah@gmail.com",
-    telephone: "+216 27 567 890",
-    filiere: filieres[2],
-    anneeEtude: "2ème année",
-    groupe: "GLSI 2",
-    ville: "", // volontairement vide : démontre la prop par défaut (TP2)
-    image: mariem,
-  },
+      id: "1",
+      prenom: "Mohamed Salah",
+      nom: "Ltaifi",
+      email: "ltaifimohamed384@gmail.com",
+      telephone: "+216 50401918",
+      filiere: "Génie Logiciel et Systèmes d'Information",
+      anneeEtude: "2ème année",
+      groupe: "GLSI 2",
+      ville: "Mednine",
+      image: img1,
+    },
+    {
+      id: "2",
+      prenom: "belhassen",
+      nom: "emp1re",
+      email: "belhassen.emp1re@gmail.com",
+      telephone: "+216 99 999 999",
+      filiere: "Génie Logiciel et Systèmes d'Information",
+      anneeEtude: "2ème année",
+      groupe: "GLSI 2",
+      ville: "Mahdia",
+      image: img2,
+    },
+    {
+      id: "3",
+      prenom: "johan",
+      nom: "cruyff",
+      email: "cruyff.johan@gmail.com",
+      telephone: "+216 27 567 890",
+      filiere: "Génie Logiciel et Systèmes d'Information",
+      anneeEtude: "2ème année",
+      groupe: "GLSI 2",
+      image: img3,
+    },
 ];

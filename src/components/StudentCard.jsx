@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import BoutonSupprimer from "./BoutonSupprimer.jsx";
 import "./StudentCard.css";
 
 function StudentCard(props) {
-  const { etudiant, onSupprimer, onModifier } = props;
+  const { etudiant, onModifier } = props;
   // TP3 : chaque fiche gère sa propre visibilité
   const [coordonneesVisibles, setCoordonneesVisibles] = useState(false);
 
+  // TP2 : valeur par défaut si une information n'est pas fournie
   const ville = etudiant.ville || "Non renseignée";
   const initiales = (etudiant.prenom[0] || "") + (etudiant.nom[0] || "");
 
@@ -38,11 +41,10 @@ function StudentCard(props) {
         <button type="button" onClick={basculerCoordonnees}>
           {coordonneesVisibles ? "Masquer les coordonnées" : "Afficher les coordonnées"}
         </button>
+        <Link className="btn" to={`/etudiants/${etudiant.id}`}>Détails</Link>
         <a className="btn" href={`mailto:${etudiant.email}`}>Contacter</a>
         <button type="button" onClick={() => onModifier(etudiant)}>Modifier</button>
-        <button type="button" className="danger" onClick={() => onSupprimer(etudiant.id)}>
-          Supprimer
-        </button>
+        <BoutonSupprimer id={etudiant.id} />
       </div>
     </div>
   );

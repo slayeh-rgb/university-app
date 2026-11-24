@@ -1,3 +1,9 @@
 .container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px; }
 .filtres { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; padding: 10px; }
 .filtres input, .filtres select { padding: 8px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
+.page { max-width: 600px; margin: 30px auto; padding: 24px; background: #fff; border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15); text-align: center; }
+.page h2 { color: #36678a; }
+.page .btn, .card .btn { display: inline-block; background: #6eaceb; color: #fff; border-radius: 6px;
+  padding: 8px 14px; text-decoration: none; }
+.photo-detail { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }

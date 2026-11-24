@@ -13,6 +13,7 @@ const VIDE = {
 };
 
 function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant, onAnnuler }) {
+  // Mode modification : préremplissage ; mode ajout : champs vides (?. et ||)
   const [champs, setChamps] = useState({
     nom: etudiantAModifier?.nom || VIDE.nom,
     prenom: etudiantAModifier?.prenom || VIDE.prenom,
@@ -26,6 +27,7 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
   });
   const [erreurs, setErreurs] = useState({});
 
+  // Composant contrôlé : un seul handler pour tous les champs (name = clé du state)
   function handleChange(e) {
     setChamps({ ...champs, [e.target.name]: e.target.value });
   }
@@ -50,7 +52,7 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); 
+    e.preventDefault(); // empêche le rechargement de la page
     if (!valider()) return;
     const nouvelEtudiant = { ...champs };
     if (etudiantAModifier) {
@@ -68,15 +70,12 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
       <label htmlFor="prenom">Prénom</label>
       <input id="prenom" name="prenom" type="text" required value={champs.prenom} onChange={handleChange} />
       {erreurs.prenom && <p className="erreur">{erreurs.prenom}</p>}
-
       <label htmlFor="nom">Nom</label>
       <input id="nom" name="nom" type="text" required value={champs.nom} onChange={handleChange} />
       {erreurs.nom && <p className="erreur">{erreurs.nom}</p>}
-
       <label htmlFor="email">Email</label>
       <input id="email" name="email" type="email" required value={champs.email} onChange={handleChange} />
       {erreurs.email && <p className="erreur">{erreurs.email}</p>}
-
       <label htmlFor="telephone">Téléphone</label>
       <input id="telephone" name="telephone" type="tel" required value={champs.telephone} onChange={handleChange} />
       {erreurs.telephone && <p className="erreur">{erreurs.telephone}</p>}
@@ -95,7 +94,6 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
 
       <label htmlFor="groupe">Groupe</label>
       <input id="groupe" name="groupe" type="text" value={champs.groupe} onChange={handleChange} />
-
       <label htmlFor="ville">Ville</label>
       <input id="ville" name="ville" type="text" value={champs.ville} onChange={handleChange} />
 
@@ -115,5 +113,4 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
     </form>
   );
 }
-
 export default StudentForm;

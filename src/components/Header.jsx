@@ -1,12 +1,11 @@
 import "./Header.css";
 
-function Header() {
+function Header({ titre, sousTitre }) {
   return (
     <header className="header">
-      <h1>Liste des étudiants</h1>
-      <p>GLSI 2 - Année universitaire 2026-2027</p>
+      <h1>{titre}</h1>
+      <p>{sousTitre}</p>
     </header>
   );
 }
-
 export default Header;

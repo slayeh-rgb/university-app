@@ -5,8 +5,8 @@
 .card h2 { color: #6eacea; margin: 12px 0; }
 .card p { margin: 6px 0; }
 .boutons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 14px; }
-.boutons button, .btn, .form button { background: #6eacea; color: #fff; border: none; border-radius: 6px;
+.boutons button, .btn { background: #6eacea; color: #fff; border: none; border-radius: 6px;
   padding: 8px 12px; cursor: pointer; text-decoration: none; font-size: 14px; }
-.boutons button:hover, .btn:hover, .form button:hover { background: #4a8ed6; }
+.boutons button:hover, .btn:hover { background: #4a8ed6; }
 .boutons .danger { background: #e05a5a; }
 .boutons .danger:hover { background: #c94444; }
