@@ -13,7 +13,6 @@ const VIDE = {
 };
 
 function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant, onAnnuler }) {
-  // Mode modification : préremplissage ; mode ajout : champs vides (?. et ||)
   const [champs, setChamps] = useState({
     nom: etudiantAModifier?.nom || VIDE.nom,
     prenom: etudiantAModifier?.prenom || VIDE.prenom,
@@ -27,7 +26,6 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
   });
   const [erreurs, setErreurs] = useState({});
 
-  // Composant contrôlé : un seul handler pour tous les champs (name = clé du state)
   function handleChange(e) {
     setChamps({ ...champs, [e.target.name]: e.target.value });
   }
@@ -52,7 +50,7 @@ function StudentForm({ etudiantAModifier, onAjouterEtudiant, onModifierEtudiant,
   }
 
   function handleSubmit(e) {
-    e.preventDefault(); // empêche le rechargement de la page
+    e.preventDefault(); 
     if (!valider()) return;
     const nouvelEtudiant = { ...champs };
     if (etudiantAModifier) {

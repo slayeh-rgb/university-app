@@ -5,10 +5,8 @@ import "./StudentCard.css";
 
 function StudentCard(props) {
   const { etudiant, onModifier } = props;
-  // TP3 : chaque fiche gère sa propre visibilité
   const [coordonneesVisibles, setCoordonneesVisibles] = useState(false);
 
-  // TP2 : valeur par défaut si une information n'est pas fournie
   const ville = etudiant.ville || "Non renseignée";
   const initiales = (etudiant.prenom[0] || "") + (etudiant.nom[0] || "");
 

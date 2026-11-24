@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { StudentContext } from "../context/StudentContext.jsx";
 
 function DetailEtudiant() {
-  const { id } = useParams(); // l'id de l'URL est une chaîne
+  const { id } = useParams(); 
   const { etudiants } = useContext(StudentContext);
   const etudiant = etudiants.find((e) => String(e.id) === id);
 
